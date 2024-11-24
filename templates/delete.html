@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block con %}
+<div class="bg-info rounded w-50 p-3 " style="transform: translate(50%, 10%);margin-bottom:200px ">
+
+    <h2>delete page</h2>
+    <h4> are you sure to delete this order </h4>
+    <p>prodact name : {{ orr }} </p>
+    <p>customer : {{ orr.customer }} </p>
+    <p> time created  : {{ orr.data_created }} </p>
+    <p> status {{ orr.status }} </p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Yes"  name="Yes" class="bg-succes">
+        <input type="submit" value="No" name="No"  class="bg-danger">
+    </form>
+</div>
+{% endblock con %}
+

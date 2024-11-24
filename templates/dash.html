@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+
+{% block con %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS: {{counCustomer}}</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					<th> view</th>	
+					<th>customer</th>
+					<th>mail</th>
+				</tr>
+                {% for x in ord %}
+					<tr>
+						<td><a href="{% url 'cust' x.pk %}" class="btn btn-sm btn-info">View</a></td>
+						<td>{{ x.name }}</td>
+						<td>{{ x.email}}</td>
+					</tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'addOO' %}">Create Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+                {% for x in forShow %}
+					<tr>
+						<td>{{x.prod}}</td>
+						<td>{{x.data_created}}</td>
+						<td>{{x.status}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'upp' x.id %}">Update</a></td>
+						<td><a href="{% url 'dell' x.id %}" class="btn btn-sm btn-danger">remove</a href="{% url 'dell' x.id %}"></td>
+					</tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+{% endblock con %}

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body style="background-color: rgba(0, 0, 0, 0.768);">
+    
+</body>
+<div class="bg-info p-3 m-2 w-50 rounded " style="transform: translate(50%, 50%);">
+    <h2 class="m-4 p-2 text-warning bg-success text-center">add your order here </h2>
+    <form action="" method="POST" class="d-flex justify-content-between" >
+        {% csrf_token %}
+        
+        <div class="d-flex flex-wrap w-50">
+            
+            {{ new }}   
+            <hr>
+        </div>
+        
+        
+
+        <input type="submit" value="save order">
+    </form>
+</div>

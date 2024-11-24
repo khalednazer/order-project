@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+<body style="background-color: rgba(0, 0, 0, 0.768);">
+    
+</body>
+
+{% block con %}
+<div class="bg-info p-3  w-50 rounded " style="transform: translate(50%, 10%);margin-bottom:320px ">
+    <h2 class="m-4 p-2 text-warning bg-success text-center">update your order here </h2>
+    <form action="" method="POST" class="d-flex justify-content-between" >
+        {% csrf_token %}
+            {{ oldd }}
+
+        <input type="submit" value="save order" >
+    </form>
+</div>
+{% endblock con %}

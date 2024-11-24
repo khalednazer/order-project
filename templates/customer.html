@@ -1,0 +1,87 @@
+{% extends 'main.html' %}
+{% block con %}
+<br>
+
+<div class="row">
+	<div class="col-md " >
+		<div class="card card-body pb-5" style="height: 187px;">
+			<h5>Customer: {{cus.name}}</h5>
+			<hr>
+			<!-- <a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a> -->
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'more' cus.id %}">buy more</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email:  {{cus.email}}</p>
+			<p>Phone:  {{cus.phone}}</p>
+		</div>
+	</div>
+
+
+</div>
+<br>
+<button class="btn bg-warning show_flt">make filter</button>
+<button class="btn bg-success hidde_flt">hidde filter</button>
+<div class="row filter" style="display: none;">
+	<div class="col">
+		<div class="card card-body">
+			<form method="GET">
+				{{ filter.form }}
+	
+			<button class="btn btn-primary" type="submit" name="search">Search</button>
+		</form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Category</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Note</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for order in custorder %}
+					<tr>
+						<td>{{order.prod}}</td>
+						<td>{{ order.prod.catgory }}</td>
+						<td>{{order.data_created}}</td>
+						<td>{{order.status}}</td>
+						<td>{{order.note}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'upp' order.pk %}">Update</a></td>
+						<td><a href="{% url 'dell' order.pk %}" class="btn btn-sm btn-danger">remove</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+	
+
+<script>
+	let show=document.querySelector('.show_flt')
+	let hidden=document.querySelector('.hidde_flt')
+	let filterDiv=document.querySelector('.filter')
+	show.onclick=function(){
+		console.log('hello world')
+		filterDiv.style.display='block'
+	}
+	hidden.onclick=function(){
+		console.log('hello world')
+		filterDiv.style.display='none'
+	}
+</script>
+{% endblock con %}
